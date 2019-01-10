@@ -47,10 +47,10 @@ void HBridge::setMotorsPWM(bool m1, bool m2, bool m3, bool m4, short pwm1, short
 }
 
 void HBridge::setMotors(bool m1, bool m2, bool m3, bool m4) {
-  digitalWrite(this->m1, m1);
-  digitalWrite(this->m2, m2);
-  digitalWrite(this->m3, m3);
-  digitalWrite(this->m4, m4);
+  analogWrite(this->m1, m1);
+  analogWrite(this->m2, m2);
+  analogWrite(this->m3, m3);
+  analogWrite(this->m4, m4);
 
   if (PWMEnabled) {
       analogWrite(this->pwm1, 255);
@@ -72,19 +72,19 @@ void HBridge::move(short l, short r) {
 }
 
 void HBridge::forward() {
-  setMotors(0, 1, 1, 0);
+  setMotors(240, 0, 240, 0);
 }
 
 void HBridge::backward() {
-  setMotors(1, 0, 0, 1);
+  setMotors(0, 240, 0, 240);
 }
 
 void HBridge::left() {
-  setMotors(0, 1, 0, 1);
+  setMotors(240,0 , 0, 240);
 }
 
 void HBridge::right() {
-  setMotors(1, 0, 1, 0);
+  setMotors(0, 240, 240, 0);
 }
 
 void HBridge::stop() {

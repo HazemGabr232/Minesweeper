@@ -1,9 +1,8 @@
-
 #define BLUETOOTH_CTRL  0
 #define JOYSTICK_CTRL   1
 
 #include <HBridge.h>
-HBridge hbridge(6, 7, 4, 5);//, 10, 11);
+HBridge hbridge(3, 5, 6, 9);//, 10, 11);
 
 /* Control Mehtods */
 char x ;
@@ -38,17 +37,4 @@ delay(1);
   
 }
 
-
-=======
-#include <RF.h>
-
-RF radio(7, 6);
-
-void setup() {
-  radio.begin(0);
-}
-
-void loop() {
-
-}
 

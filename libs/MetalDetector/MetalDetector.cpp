@@ -7,5 +7,5 @@ MetalDetector::MetalDetector(int pin) {
 }
 
 int MetalDetector::detect() {
-  return digitalRead(pin);
+  return pulseIn(pin,HIGH,350000);  // returns 0 if there is a mine 
 }

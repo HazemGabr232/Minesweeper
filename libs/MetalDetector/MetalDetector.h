@@ -6,7 +6,7 @@ private:
   int pin;
 public:
   MetalDetector(int);
-  int detect();
+  long detect();
 };
 
 #endif

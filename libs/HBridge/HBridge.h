@@ -5,7 +5,7 @@ class HBridge {
 private:
   int m1, m2, m3, m4, pwm1, pwm2;
   void setMotorsPWM(bool, bool, bool, bool, short, short);
-  void setMotors(bool, bool, bool, bool);
+  void setMotors(int, int, int, int);
   bool PWMEnabled = false;
 
 public:

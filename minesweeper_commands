@@ -1,19 +1,35 @@
+                                   
 
+roscore                                                  **master** laptob in our case 
+ssh thunder@raspberryPi_ip 
 
-roscore                                                  **master** 
+sudo chmod a+rw /dev/ttyACM0
+sudo chmod a+rw /dev/ttyACM1                            **enable usb ports**
 
-roslaunch robot_model robot_rviz.launch model:=robot.urdf  **rviz load **
 
 rosrun rosserial_python serial_node.py /dev/ttyACM0        **start arduino**
-rosrun rosserial_python serial_node.py /dev/ttyACM1        **start arduino**
+rosrun rosserial_python serial_node1.py /dev/ttyACM1        **start arduino**
 
 rosrun joypkg JoyControl.py                              **start joystick**
+roslaunch urdf_tutorial display.launch model:='$(find urdf_tutorial)thunder.urdf'       **rviz load **
 
 
-sudo apt-get install ros-indigo-rosserial-arduino
-sudo apt-get install ros-indigo-rosserial                 **to download ros_serial**
 
+                                      **important commands** 
+
+sudo apt-get install ros-kinetic-rosserial-arduino
+sudo apt-get install ros-kinetic-rosserial                 **to download ros_serial**
+rosrun rosserial_arduino make_libraries.py arduinoIDE-directory        **to generate ros_lib** **note : always use the lib generated from ros version which is on the raspberry pi**
 sudo apt-get install python-pygame                       **to download pygame**
+catkin_make                                            **to install changes in the work space **
 
-catkin_make                                             **to install changes in the work space **
 
+
+                       **   add this block to /etc/rc.local  on raspberry pi **
+sudo systemctl enable ssh
+expect "password for thunder: "
+send "write_password_here"
+sudo service ssh restart
+expect "password for thunder: "
+send "write_password_here"
+exit 0
